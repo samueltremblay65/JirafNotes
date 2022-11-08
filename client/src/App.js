@@ -8,18 +8,12 @@ class App extends React.Component {
   constructor() {
     super();
 
-    // State initialization
-    var jiraf1 = {title: "Standup update", message: "This is this morning's update", labels:["All", "Important"]};
-    var jiraf2 = {title: "Lunch reminder", message: "Your lunch today is pork chops and potatoes", labels:["All"]};
-
-    var labels = [{label: "All", selected: true}, {label: "Important", selected: false}, {label: "To do list", selected: false}, {label: "Today", selected: false}, {label: "School", selected: false}, {label: "Work", selected: false}];
-
-    this.state = { jirafItems: [jiraf1, jiraf2], selectedJirafs: [jiraf1, jiraf2], labels: labels, currentLabel: "All"};
-
     // Binding methods
     this.addNewJirafItem = this.addNewJirafItem.bind(this);
     this.handleLabelSelect = this.handleLabelSelect.bind(this);
     this.filterByLabel = this.filterByLabel.bind(this);
+
+    this.loaded = false;
   }
 
   // Filters the jiraf notes by their label (based on the selected label in the sidebar)
@@ -38,16 +32,22 @@ class App extends React.Component {
   }
 
   // Adds a new item to the jiraf item list
-  addNewJirafItem(title, message)
+  addNewJirafItem(title, message, color="orange")
   {
     // Set state, labels, and then filter by label
     const labels = ["All"];
-    if(this.state.currentLabel != "All")
+    if(this.state.currentLabel !== "All")
     {
       labels.push(this.state.currentLabel);
     }
 
-    this.setState({jirafItems: [...this.state.jirafItems, {title:title, message:message, labels:labels}], selectedJirafs: [...this.state.selectedJirafs, {title:title, message:message, labels}]});
+    const tmpJirafItems = this.state.jirafItems;
+    const newJiraf = {title:title, message:message, labels:labels, color: color};
+    tmpJirafItems.unshift(newJiraf);
+
+    this.setState({jirafItems: tmpJirafItems});
+
+    this.handleLabelSelect(this.state.currentLabel);
   }
 
   // handles the selection of a label in the sidebar (passed to sidebar component)
@@ -56,18 +56,36 @@ class App extends React.Component {
     const labels = this.state.labels;
     labels.forEach(element => {
       element.selected = false;
-      if(element.label == label)
+      if(element.label === label)
       {
         element.selected = true;
       }
     });
     this.setState({labels: labels, currentLabel:label});
-    console.log("Set state to " + label);
     this.filterByLabel(label);
   }
 
+  componentDidMount() {
+    fetch("/data")
+        .then((res) => res.json())
+        .then((json) => {
+            this.setState({
+                jirafItems: json.jirafItems,
+                selectedJirafs: json.jirafItems,
+                labels: json.labels,
+                currentLabel: json.currentLabel
+            });
+            this.loaded = true;
+        })
+}
+
   // Main rendering for the app
   render() {
+    if(!this.loaded)
+    {
+      return (<div>Not loaded yet</div>);
+    }
+
     return (
       <div className="App">
         <Sidebar labels={this.state.labels} labelChangeHandler={this.handleLabelSelect}/>
@@ -76,6 +94,12 @@ class App extends React.Component {
           <AddBar newJirafMethod={this.addNewJirafItem} />
           <ListsView jirafItems={this.state.selectedJirafs}/>
         </div>
+
+        <dialog class="createDialog">
+          <h1>Are you sure</h1>
+          <button>Yes</button>
+          <button>No</button>
+        </dialog>
       </div>
     );
   }

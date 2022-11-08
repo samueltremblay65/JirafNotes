@@ -8,6 +8,21 @@ app.get("/api", (req, res) => {
     res.json({ message: "Hello from server!" });
   });
 
+jirafs = [];
+
+jirafs.push({title: "Important note on pandas", message: "Panda bears are very important to their ecosystems", labels:["All", "Important"], color:"yellow"});
+jirafs.push({title: "School note", message: "Don't forget to do your math homework", labels:["All", "School", "Today"], color:"red"});
+jirafs.push({title: "Random note", message: "This is a drawing", labels:["All"], color:"lightblue"});
+
+app.get("/data", (req, res) => {
+    res.json({
+      labels: [{label: "All", selected: true}, {label: "Important", selected: false}, {label: "Today", selected: false}],
+      jirafItems: jirafs,
+      currentLabel: "All"
+    });
+    console.log("Sent data to react app");
+  });
+
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
