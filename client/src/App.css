@@ -1,16 +1,18 @@
+:root {
+  --main-colors-yellow: rgb(247, 239, 184);
+  --main-colors-orange: rgb(237, 170, 115);
+  --main-colors-red: rgb(240, 130, 130);
+  --main-colors-pink: rgb(240, 169, 184);
+  --main-colors-purple: rgb(199, 149, 233);
+  --main-colors-darkblue: rgb(93, 108, 235);
+  --main-colors-blue: rgb(115, 163, 226);
+  --main-colors-lightblue: rgb(165, 221, 247);
+  --main-colors-lightgreen: rgb(175, 240, 167);
+  --main-colors-yellowgreen: rgb(200, 241, 124);
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -28,11 +30,131 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+li
+{
+  list-style: none;
+}
+
+ul
+{
+  padding: 0px;
+}
+
+.sidebar {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  text-align: left;
+  padding: 20px;
+  border-right: 1px solid lightgray;
+}
+
+.sidebar ul li {
+  border: 1px solid white;
+  border-radius: 20px;
+  width: auto;
+  padding: 15px;
+  margin-bottom: 5px;
+}
+
+.sidebar ul li:hover {
+  border: 1px solid --main-colors-orange;
+  background-color: rgb(236, 195, 162);
+  cursor: pointer;
+}
+
+.main {
+  margin-left: 240px;
+  padding: 20px;
+}
+
+.selected_li {
+  background-color: var(--main-colors-orange);
+}
+
+.add_bar {
+  width: 100%;
+}
+
+.add_bar {
+  text-align: left;
+}
+
+.jirafItem {
+  width: 400px;
+  border-radius: 10px;
+  border: 0.5px solid rgb(237, 237, 237);
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  text-align: left;
+}
+
+.jirafItem h1, p {
+  margin: 0px;
+}
+
+.jirafItem h1 {
+  font-size: large;
+}
+
+.yellow {
+  background-color: var(--main-colors-yellow);
+}
+
+.orange {
+  background-color: var(--main-colors-orange);
+}
+
+.red {
+  background-color: var(--main-colors-red);
+}
+
+.lightblue {
+  background-color: var(--main-colors-lightblue);
+}
+
+.lightgreen {
+  background-color: var(--main-colors-lightgreen);
+}
+
+.yellowgreen {
+  background-color: var(--main-colors-yellowgreen);
+}
+
+.white {
+  background-color: white;
+}
+
+.createDialog
+{
+  border: 1px solid grey;
+  border-radius: 5px;
+  background-color: var(--main-colors-yellowgreen);
+}
+
+button {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: var(--main-colors-orange);
+  border: 1px solid var(--main-colors-orange);
+  margin-inline-start: 20px;
+  font-family: inherit;
+  font-size: medium;
+}
+
+input {
+  font-size: medium;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid grey;
+  width: 335px;
+}
+
+input:focus-visible {
+  outline: none;
 }
