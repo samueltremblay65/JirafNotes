@@ -45,10 +45,13 @@ ul
   border-radius: 20px;
   width: auto;
   padding: 15px;
+  margin-bottom: 5px;
 }
 
 .sidebar ul li:hover {
   border: 1px solid lightcoral;
+  background-color: rgb(254, 224, 224);
+  cursor: pointer;
 }
 
 .main {
@@ -66,4 +69,8 @@ ul
 
 .add_bar {
   text-align: left;
+}
+
+.half_width {
+  width: 50%;
 }

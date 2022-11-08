@@ -7,6 +7,7 @@ export default function AddBar({newJirafMethod}) {
     function addJiraf()
     {
         newJirafMethod(inputRef.current.value, "New item description");
+        inputRef.current.value = "";
     }
 
   return (
