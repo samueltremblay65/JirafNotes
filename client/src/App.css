@@ -158,3 +158,11 @@ input {
 input:focus-visible {
   outline: none;
 }
+
+.column_container {
+  display: flex;
+}
+
+.column {
+  flex: 1;
+}
