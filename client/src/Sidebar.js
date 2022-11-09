@@ -13,7 +13,10 @@ export default function Sidebar({labels, labelChangeHandler, labelAddHandler}) {
     {
         labelList = null;
     }
-    labelList = labels.map(label => {return <li onClick={() => labelSelector(label.label)} key={label.label} className={(label.selected) ? "selected_li": ""}>{label.label}</li>});
+    else
+    {
+        labelList = labels.map(label => {return <li onClick={() => labelSelector(label.label)} key={label.label} className={(label.selected) ? "selected_li": ""}>{label.label}</li>});
+    }
 
     function labelSelector(label)
     {
