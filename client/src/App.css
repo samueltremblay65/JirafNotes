@@ -112,8 +112,16 @@ ul
   background-color: var(--main-colors-orange);
 }
 
+.purple {
+  background-color: var(--main-colors-purple);
+}
+
 .red {
   background-color: var(--main-colors-red);
+}
+
+.pink {
+  background-color: var(--main-colors-pink);
 }
 
 .blue {
