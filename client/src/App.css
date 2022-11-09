@@ -11,6 +11,7 @@
   --main-colors-yellowgreen: rgb(200, 241, 124);
 
   --button-color-lightorange: rgb(235, 187, 148);
+  --button-color-lightred: rgb(238, 154, 154);
 }
 
 .App {
@@ -219,4 +220,12 @@ label {
 .error_message {
   font-size: smaller;
   color: darkred;
+}
+
+.mg_top_10 {
+  margin-top: 10px;
+}
+
+button.red:active {
+  background-color: var(--button-color-lightred);
 }
