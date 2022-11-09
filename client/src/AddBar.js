@@ -7,6 +7,8 @@ export default function AddBar({newJirafMethod}) {
     function addJiraf()
     {
         const random_color = Math.floor(Math.random() * 9);
+
+        console.log(random_color);
         var colorName;
     
         switch(random_color){
@@ -49,7 +51,7 @@ export default function AddBar({newJirafMethod}) {
     <>
         <div className='add_bar'>
             <input ref={inputRef} type="text" placeholder='Take a note'/>
-            <button onClick={addJiraf}>Create</button>
+            <button className="ml_20" onClick={addJiraf}>Create</button>
         </div>
     </>
   )

@@ -9,6 +9,8 @@
   --main-colors-lightblue: rgb(165, 221, 247);
   --main-colors-lightgreen: rgb(175, 240, 167);
   --main-colors-yellowgreen: rgb(200, 241, 124);
+
+  --button-color-lightorange: rgb(235, 187, 148);
 }
 
 .App {
@@ -114,6 +116,10 @@ ul
   background-color: var(--main-colors-red);
 }
 
+.blue {
+  background-color: var(--main-colors-blue);
+}
+
 .lightblue {
   background-color: var(--main-colors-lightblue);
 }
@@ -142,9 +148,17 @@ button {
   border-radius: 5px;
   background-color: var(--main-colors-orange);
   border: 1px solid var(--main-colors-orange);
-  margin-inline-start: 20px;
   font-family: inherit;
   font-size: medium;
+}
+
+button:hover {
+  transform: scale(1.02);
+}
+
+button:active {
+  background-color: var(--button-color-lightorange);
+  border-color: var(--button-color-lightorange);
 }
 
 input {
@@ -165,4 +179,36 @@ input:focus-visible {
 
 .column {
   flex: 1;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.ml_20 {
+  margin-inline-start: 20px;
+}
+
+dialog {
+  background-color: white;
+  border-radius: 10px;
+  border: none;
+  font-size: medium;
+  text-align: left;
+}
+
+dialog input {
+  margin-right: 20px;
+}
+
+label {
+  display: block;
+  padding-left: 0px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.error_message {
+  font-size: smaller;
+  color: darkred;
 }

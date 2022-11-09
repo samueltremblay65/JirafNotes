@@ -12,6 +12,7 @@ class App extends React.Component {
     this.addNewJirafItem = this.addNewJirafItem.bind(this);
     this.handleLabelSelect = this.handleLabelSelect.bind(this);
     this.filterByLabel = this.filterByLabel.bind(this);
+    this.handleAddLabel = this.handleAddLabel.bind(this);
 
     this.loaded = false;
   }
@@ -65,6 +66,11 @@ class App extends React.Component {
     this.filterByLabel(label);
   }
 
+  handleAddLabel(label)
+  {
+    this.setState({labels: [...this.state.labels, {label: label, selected: false}]});
+  }
+
   componentDidMount() {
     fetch("/data")
         .then((res) => res.json())
@@ -88,18 +94,12 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Sidebar labels={this.state.labels} labelChangeHandler={this.handleLabelSelect}/>
+        <Sidebar labels={this.state.labels} labelChangeHandler={this.handleLabelSelect} labelAddHandler={this.handleAddLabel}/>
 
         <div className='main'>
           <AddBar newJirafMethod={this.addNewJirafItem} />
           <ListsView jirafItems={this.state.selectedJirafs}/>
         </div>
-
-        <dialog class="createDialog">
-          <h1>Are you sure</h1>
-          <button>Yes</button>
-          <button>No</button>
-        </dialog>
       </div>
     );
   }
