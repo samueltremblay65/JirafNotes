@@ -2,13 +2,22 @@ import React from 'react'
 import { useRef } from 'react';
 
 export default function AddBar({newJirafMethod}) {
-    const inputRef = useRef();
+    const titleInputRef = useRef();
+    const createModalRef = useRef();
+    const createTitleRef = useRef();
+    const createContentRef = useRef();
+
+    function openCreateModal()
+    {
+        createTitleRef.current.value = titleInputRef.current.value;
+        titleInputRef.current.value = "";
+        createModalRef.current.showModal();
+    }
 
     function addJiraf()
     {
         const random_color = Math.floor(Math.random() * 9);
 
-        console.log(random_color);
         var colorName;
     
         switch(random_color){
@@ -43,16 +52,33 @@ export default function AddBar({newJirafMethod}) {
             colorName = "white";
             break;
         }
-        newJirafMethod(inputRef.current.value, "New item description", colorName);
-        inputRef.current.value = "";
+        if(createContentRef.current.value.trim() === "" && createTitleRef.current.value.trim() === "")
+        {
+            newJirafMethod("New note", "", colorName);
+        }
+        else
+        {
+            newJirafMethod(createTitleRef.current.value, createContentRef.current.value, colorName);
+        }
+        createTitleRef.current.value = "";
+        createContentRef.current.value = "";
+        createModalRef.current.close();
     }
 
   return (
     <>
         <div className='add_bar'>
-            <input ref={inputRef} type="text" placeholder='Take a note'/>
-            <button className="ml_20" onClick={addJiraf}>Create</button>
+            <input ref={titleInputRef} type="text" placeholder='Take a note'/>
+            <button className="ml_20" onClick={openCreateModal}>Create</button>
         </div>
+        <dialog ref={createModalRef} className="createModal">
+            <label>New Note</label>
+            <input className="form_input block" type="text" ref={createTitleRef} placeholder="title"></input>
+            <textarea ref={createContentRef} placeholder='take a note...'></textarea>
+            <div className='centered'>
+                <button className='float_right' onClick={addJiraf}>Create note</button>
+            </div>
+        </dialog>
     </>
   )
 }

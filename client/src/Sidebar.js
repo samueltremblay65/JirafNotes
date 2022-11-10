@@ -63,6 +63,7 @@ export default function Sidebar({labels, labelChangeHandler, labelAddHandler}) {
             <ul>{labelList}</ul>
             <hr />
             <button className="fullWidth" onClick={showDialog}>Add Label</button>
+            <button className="fullWidth red mg_top_10">Manage Labels</button>
 
             <dialog ref={addLabelDialog}>
                 <label htmlFor="">Create new label</label>
