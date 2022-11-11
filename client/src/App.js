@@ -80,7 +80,7 @@ class App extends React.Component {
     this.setState({labels: [...this.state.labels, {label: label, selected: false}]});
   }
 
-  editJiraf(jirafItem)
+  editJiraf(jirafItem, optionDelete)
   {
     const jirafItems = this.state.jirafItems;
     var i = 0;
@@ -90,9 +90,16 @@ class App extends React.Component {
       if(i >= jirafItems.length) return;
     }
 
-    jirafItems[i] = jirafItem;
-
+    if(optionDelete)
+    {
+      jirafItems.splice(i, 1); // 2nd parameter means remove one item only
+    }
+    else
+    {
+      jirafItems[i] = jirafItem;
+    }
     this.setState({jirafItems: jirafItems});
+    this.handleLabelSelect(this.state.currentLabel);
   }
   
   componentDidMount() {

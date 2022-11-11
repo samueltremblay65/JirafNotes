@@ -33,7 +33,13 @@ export default function ListsView({jirafItems, editCallback}) {
         const newJiraf = {title:currentJiraf.title, message:currentJiraf.message, labels:currentJiraf.labels, color: currentJiraf.color, id:currentJiraf.id};
         newJiraf.title = createTitleRef.current.value;
         newJiraf.message = createContentRef.current.value;
-        editCallback(newJiraf);
+        editCallback(newJiraf, false);
+        createModalRef.current.close();
+    }
+
+    function deleteJiraf()
+    {
+        editCallback(currentJiraf, true);
         createModalRef.current.close();
     }
 
@@ -53,7 +59,8 @@ export default function ListsView({jirafItems, editCallback}) {
             <input className="form_input block" type="text" ref={createTitleRef} placeholder="title"></input>
             <textarea ref={createContentRef} placeholder='take a note...'></textarea>
             <div className='centered'>
-                <button className='float_right' onClick={editJiraf}>Save changes</button>
+                <button className='mg-inline-5 float_right' onClick={editJiraf}>Save changes</button>
+                <button className='mg-inline-5 float_right red' onClick={deleteJiraf}>Delete note</button>
             </div>
         </dialog>
     </div>
