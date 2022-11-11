@@ -71,7 +71,7 @@ export default function AddBar({newJirafMethod}) {
             <input ref={titleInputRef} type="text" placeholder='Take a note'/>
             <button className="ml_20" onClick={openCreateModal}>Create</button>
         </div>
-        <dialog ref={createModalRef} className="createModal">
+        <dialog ref={createModalRef} className="jirafModal">
             <label>New Note</label>
             <input className="form_input block" type="text" ref={createTitleRef} placeholder="title"></input>
             <textarea ref={createContentRef} placeholder='take a note...'></textarea>
