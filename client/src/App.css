@@ -234,11 +234,11 @@ button.red:active {
   display: block;
 }
 
-.createModal {
+.jirafModal {
   width: 400px;
 }
 
-.createModal input {
+.jirafModal input {
   margin: 0px;
   margin-bottom: 10px;
   width: 100%;
@@ -259,7 +259,7 @@ textarea {
   padding: 10px;
 }
 
-.createModal textarea {
+.jirafModal textarea {
   width: 100%;
   height: max-content;
   resize: none;
