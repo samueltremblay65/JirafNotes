@@ -93,6 +93,7 @@ class App extends React.Component {
     jirafItems[i] = jirafItem;
 
     this.setState({jirafItems: jirafItems});
+    this.handleLabelSelect(this.state.currentLabel);
   }
   
   componentDidMount() {
