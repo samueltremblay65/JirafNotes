@@ -275,3 +275,11 @@ textarea {
 .blockList li {
   display: block;
 }
+
+.mg-inline-5 {
+  margin-inline: 5px;
+}
+
+.float_right {
+  float: right;
+}
