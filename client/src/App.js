@@ -15,6 +15,7 @@ class App extends React.Component {
     this.filterByLabel = this.filterByLabel.bind(this);
     this.handleAddLabel = this.handleAddLabel.bind(this);
     this.editJiraf = this.editJiraf.bind(this);
+    this.handleDeleteLabel = this.handleDeleteLabel.bind(this);
 
     this.loaded = false;
   }
@@ -80,6 +81,27 @@ class App extends React.Component {
     this.setState({labels: [...this.state.labels, {label: label, selected: false}]});
   }
 
+  handleDeleteLabel(label)
+  {
+    const tmpLabels = this.state.labels;
+
+    var i = 0;
+    while(tmpLabels[i].label !== label.label && i < tmpLabels.length)
+    {
+      i++;
+    }
+
+    if(i >= tmpLabels.length)
+    {
+      alert("Could not delete the " + label.label + " label.")
+      return;
+    }
+    
+    tmpLabels.splice(i, 1);
+
+    this.setState({labels: tmpLabels});
+  }
+
   editJiraf(jirafItem, optionDelete)
   {
     const jirafItems = this.state.jirafItems;
@@ -125,7 +147,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Sidebar labels={this.state.labels} labelChangeHandler={this.handleLabelSelect} labelAddHandler={this.handleAddLabel}/>
+        <Sidebar labels={this.state.labels} labelChangeHandler={this.handleLabelSelect} labelAddHandler={this.handleAddLabel} labelDeleteHandler={this.handleDeleteLabel}/>
 
         <div className='main'>
           <AddBar newJirafMethod={this.addNewJirafItem} />

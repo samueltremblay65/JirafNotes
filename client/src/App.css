@@ -1,8 +1,8 @@
 :root {
   --main-colors-yellow: rgb(240, 212, 102);
   --main-colors-orange: rgb(237, 170, 115);
-  --main-colors-red: rgb(240, 130, 130);
-  --main-colors-pink: rgb(245, 188, 210);
+  --main-colors-red: rgb(245, 94, 94);
+  --main-colors-pink: rgb(243, 127, 212);
   --main-colors-purple: rgb(199, 149, 233);
   --main-colors-darkblue: rgb(93, 108, 235);
   --main-colors-blue: rgb(115, 163, 226);
@@ -73,6 +73,7 @@ ul
 .main {
   margin-left: 240px;
   padding: 20px;
+  width: max-content;
 }
 
 .selected_li {
@@ -97,7 +98,12 @@ ul
   text-align: left;
 }
 
-.jirafItem h1, p {
+.jirafItem h1 {
+  margin-bottom: 10px;
+  margin-top: 0px;
+}
+
+.jirafItem p {
   margin: 0px;
 }
 
@@ -119,6 +125,7 @@ ul
 
 .red {
   background-color: var(--main-colors-red);
+  border-color: var(--main-colors-red);
 }
 
 .pink {
@@ -229,6 +236,7 @@ label {
 
 button.red:active {
   background-color: var(--button-color-lightred);
+  border-color: var(--button-color-lightred);
 }
 
 .block {
@@ -303,4 +311,48 @@ select {
 .bulleted {
   list-style-type: disc;
   margin-left: 20px;
+}
+
+.manageLabelsDialog {
+  width: 30%;
+}
+
+.inline {
+  display: inline;
+}
+
+.clear {
+  overflow: auto;
+}
+
+.space_between {
+  justify-content: space-between;
+}
+
+.flex {
+  display: flex;
+}
+
+.auto_height {
+  height: auto;
+}
+
+.borders {
+  border-bottom: 1px solid grey;
+}
+
+.borders:last-child {
+  border-bottom: none;
+}
+
+.mg-block-5 {
+  margin-block: 5px;
+}
+
+.manageLabelsLabel:hover {
+  background-color: rgb(244, 244, 244);
+}
+
+.manageLabelsLabel {
+  padding: 5px;
 }

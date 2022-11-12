@@ -28,7 +28,8 @@ export default function JirafItem({jirafItem, editCallback}) {
             {
               listItems.push(<li className='bulleted' key={uuid()}>{contentLines[i].substring(2, contentLines[i].length)}</li>);
             }
-            contentItems.push(<ul>{listItems}</ul>);
+            i--;
+            contentItems.push(<ul key={uuid()}>{listItems}</ul>);
           }
           else
           {
