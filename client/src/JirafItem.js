@@ -13,16 +13,28 @@ export default function JirafItem({jirafItem, editCallback}) {
     function formatMessage()
     {
         var contentLines = jirafItem.message.split("\n");
-        contentLines.forEach(element => {
-            if(element.trim() === "")
+
+        for(var i = 0; i < contentLines.length; i++)
+        {
+          if(contentLines[i].trim() === "")
+          {
+            contentItems.push(<br key={uuid()}></br>);
+          }
+          else if(contentLines[i].startsWith("- "))
+          {
+            var listItems = [];
+            listItems.push(<li className="bulleted" key={uuid()}>{contentLines[i].substring(2, contentLines[i].length)}</li>);
+            while(contentLines[++i] != null && contentLines[i].startsWith("- "))
             {
-                contentItems.push(<br key={uuid()}></br>);
+              listItems.push(<li className='bulleted' key={uuid()}>{contentLines[i].substring(2, contentLines[i].length)}</li>);
             }
-            else
-            {
-                contentItems.push(<p key={uuid()}>{element}</p>);
-            }
-        });
+            contentItems.push(<ul>{listItems}</ul>);
+          }
+          else
+          {
+            contentItems.push(<p key={uuid()}>{contentLines[i]}</p>);
+          }
+        }
     }
      
   return (
