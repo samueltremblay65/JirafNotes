@@ -66,7 +66,11 @@ export default function ListsView({jirafItems, editCallback}) {
             <input className="form_input block" type="text" ref={createTitleRef} placeholder="title"></input>
             <textarea ref={createContentRef} placeholder='take a note...'></textarea>
             <div>
-                <select ref={colorSelector} onChange={changeColor}>
+                <button className='mg-inline-5 float_right' onClick={editJiraf}>Save changes</button>
+                <button className='mg-inline-5 float_right red' onClick={deleteJiraf}>Delete note</button>
+                <select className="float_right" ref={colorSelector} onChange={changeColor}>
+                    <option value="" disabled>Select a color</option>
+                    <option value="yellow">White</option>
                     <option value="yellow">Yellow</option>
                     <option value="orange">Orange</option>
                     <option value="red">Red</option>
@@ -77,8 +81,6 @@ export default function ListsView({jirafItems, editCallback}) {
                     <option value="lightgreen">Light green</option>
                     <option value="yellowgreen">Yellow-Green</option>
                 </select>
-                <button className='mg-inline-5 float_right' onClick={editJiraf}>Save changes</button>
-                <button className='mg-inline-5 float_right red' onClick={deleteJiraf}>Delete note</button>
             </div>
         </dialog>
     </div>

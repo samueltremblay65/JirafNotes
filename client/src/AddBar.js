@@ -18,6 +18,10 @@ export default function AddBar({newJirafMethod}) {
     function addJiraf()
     {
       var color = selectColorRef.current.value;
+      if(color === "")
+      {
+        color = "white";
+      }
       if(createContentRef.current.value.trim() === "" && createTitleRef.current.value.trim() === "")
       {
         newJirafMethod("New note", "", color);
@@ -29,7 +33,7 @@ export default function AddBar({newJirafMethod}) {
       createTitleRef.current.value = "";
       createContentRef.current.value = "";
       createModalRef.current.close();
-      selectColorRef.current.value = "white";
+      selectColorRef.current.value = "";
     }
 
   return (
@@ -42,9 +46,11 @@ export default function AddBar({newJirafMethod}) {
             <label>New Note</label>
             <input className="form_input block" type="text" ref={createTitleRef} placeholder="title"></input>
             <textarea ref={createContentRef} placeholder='take a note...'></textarea>
-            <div className='centered'>
-              <select ref={selectColorRef}>
-                <option value="white" selected={true}>White</option>
+            <div>
+              <button className='float_right' onClick={addJiraf}>Create note</button>
+              <select className='float_right' ref={selectColorRef}>
+                <option value="" disabled>Select a color</option>
+                <option value="white">White</option>
                 <option value="yellow">Yellow</option>
                 <option value="orange">Orange</option>
                 <option value="red">Red</option>
@@ -55,7 +61,6 @@ export default function AddBar({newJirafMethod}) {
                 <option value="lightgreen">Light green</option>
                 <option value="yellowgreen">Yellow-Green</option>
               </select>
-              <button className='float_right' onClick={addJiraf}>Create note</button>
             </div>
         </dialog>
     </>

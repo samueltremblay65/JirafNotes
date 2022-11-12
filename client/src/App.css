@@ -1,8 +1,8 @@
 :root {
-  --main-colors-yellow: rgb(247, 239, 184);
+  --main-colors-yellow: rgb(240, 212, 102);
   --main-colors-orange: rgb(237, 170, 115);
   --main-colors-red: rgb(240, 130, 130);
-  --main-colors-pink: rgb(240, 169, 184);
+  --main-colors-pink: rgb(245, 188, 210);
   --main-colors-purple: rgb(199, 149, 233);
   --main-colors-darkblue: rgb(93, 108, 235);
   --main-colors-blue: rgb(115, 163, 226);
@@ -142,7 +142,8 @@ ul
 }
 
 .white {
-  background-color: white;
+  background-color: rgb(249, 249, 249);
+  border: 1px solid grey;
 }
 
 .createDialog
@@ -293,4 +294,8 @@ select {
   -o-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box; 
+  border-radius: 10px;
+  padding-bottom: 12px;
+  margin-right: 10px;
+  width: auto;
 }
