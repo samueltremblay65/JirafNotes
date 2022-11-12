@@ -1,12 +1,14 @@
 import React from 'react'
 import { useRef } from 'react';
 import logo from "./JirafLogo.PNG"
+import LabelList from './LabelList';
 
 export default function Sidebar({labels, labelChangeHandler, labelAddHandler}) {
 
     const addLabelDialog = useRef();
     const errorMessageLabel = useRef();
     const addLabelInput = useRef();
+    const manageLabelsDialog = useRef();
 
     var labelList;
     if(labels == null)
@@ -59,19 +61,29 @@ export default function Sidebar({labels, labelChangeHandler, labelAddHandler}) {
         }
     }
 
+    function showManageLabels()
+    {
+        manageLabelsDialog.current.showModal();
+    }
+
     return (
         <div className='sidebar'>
             <img src={logo} width="100px" alt='logo'/>
             <ul>{labelList}</ul>
             <hr />
             <button className="fullWidth" onClick={showDialog}>Add Label</button>
-            <button className="fullWidth red mg_top_10">Manage Labels</button>
+            <button className="fullWidth red mg_top_10" onClick={showManageLabels}>Manage Labels</button>
 
             <dialog ref={addLabelDialog}>
                 <label htmlFor="">Create new label</label>
                 <input ref={addLabelInput} type="text" placeholder='Label name' />
                 <button onClick={addLabel}>Add</button>
                 <p className="error_message" ref={errorMessageLabel}></p>
+            </dialog>
+
+            <dialog ref={manageLabelsDialog}>
+                <label>Manage labels</label>
+                <LabelList />
             </dialog>
         </div>
     )

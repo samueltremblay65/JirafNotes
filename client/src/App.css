@@ -1,8 +1,8 @@
 :root {
   --main-colors-yellow: rgb(240, 212, 102);
   --main-colors-orange: rgb(237, 170, 115);
-  --main-colors-red: rgb(240, 130, 130);
-  --main-colors-pink: rgb(245, 188, 210);
+  --main-colors-red: rgb(245, 94, 94);
+  --main-colors-pink: rgb(243, 127, 212);
   --main-colors-purple: rgb(199, 149, 233);
   --main-colors-darkblue: rgb(93, 108, 235);
   --main-colors-blue: rgb(115, 163, 226);
@@ -73,6 +73,7 @@ ul
 .main {
   margin-left: 240px;
   padding: 20px;
+  width: max-content;
 }
 
 .selected_li {
@@ -97,7 +98,12 @@ ul
   text-align: left;
 }
 
-.jirafItem h1, p {
+.jirafItem h1 {
+  margin-bottom: 10px;
+  margin-top: 0px;
+}
+
+.jirafItem p {
   margin: 0px;
 }
 
