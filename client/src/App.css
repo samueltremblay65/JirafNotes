@@ -1,8 +1,8 @@
 :root {
-  --main-colors-yellow: rgb(247, 239, 184);
+  --main-colors-yellow: rgb(240, 212, 102);
   --main-colors-orange: rgb(237, 170, 115);
   --main-colors-red: rgb(240, 130, 130);
-  --main-colors-pink: rgb(240, 169, 184);
+  --main-colors-pink: rgb(245, 188, 210);
   --main-colors-purple: rgb(199, 149, 233);
   --main-colors-darkblue: rgb(93, 108, 235);
   --main-colors-blue: rgb(115, 163, 226);
@@ -11,6 +11,7 @@
   --main-colors-yellowgreen: rgb(200, 241, 124);
 
   --button-color-lightorange: rgb(235, 187, 148);
+  --button-color-lightred: rgb(238, 154, 154);
 }
 
 .App {
@@ -141,7 +142,8 @@ ul
 }
 
 .white {
-  background-color: white;
+  background-color: rgb(249, 249, 249);
+  border: 1px solid grey;
 }
 
 .createDialog
@@ -219,4 +221,86 @@ label {
 .error_message {
   font-size: smaller;
   color: darkred;
+}
+
+.mg_top_10 {
+  margin-top: 10px;
+}
+
+button.red:active {
+  background-color: var(--button-color-lightred);
+}
+
+.block {
+  display: block;
+}
+
+.jirafModal {
+  width: 400px;
+}
+
+.jirafModal input {
+  margin: 0px;
+  margin-bottom: 10px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box; 
+}
+
+textarea {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box; 
+  font-family: inherit;
+  padding: 10px;
+}
+
+.jirafModal textarea {
+  width: 100%;
+  height: max-content;
+  resize: none;
+  height: 400px;
+  outline: none;
+  border: none;
+}
+
+.centered {
+  text-align: center;
+}
+
+.blockList li {
+  display: block;
+}
+
+.mg-inline-5 {
+  margin-inline: 5px;
+}
+
+.float_right {
+  float: right;
+}
+
+select {
+  padding: 10px;
+  outline: none;
+  font-family: inherit;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box; 
+  border-radius: 10px;
+  padding-bottom: 12px;
+  margin-right: 10px;
+  width: auto;
+}
+
+.bulleted {
+  list-style-type: disc;
+  margin-left: 20px;
 }

@@ -3,6 +3,7 @@ import AddBar from './AddBar';
 import "./App.css";
 import ListsView from './ListsView';
 import Sidebar from './Sidebar';
+import { v1 as uuid } from 'uuid';
 
 class App extends React.Component {
   constructor() {
@@ -13,8 +14,14 @@ class App extends React.Component {
     this.handleLabelSelect = this.handleLabelSelect.bind(this);
     this.filterByLabel = this.filterByLabel.bind(this);
     this.handleAddLabel = this.handleAddLabel.bind(this);
+    this.editJiraf = this.editJiraf.bind(this);
 
     this.loaded = false;
+  }
+
+  generateId(name)
+  {
+    return name + uuid();
   }
 
   // Filters the jiraf notes by their label (based on the selected label in the sidebar)
@@ -42,8 +49,10 @@ class App extends React.Component {
       labels.push(this.state.currentLabel);
     }
 
+    const id = this.generateId("sam");
+
     const tmpJirafItems = this.state.jirafItems;
-    const newJiraf = {title:title, message:message, labels:labels, color: color};
+    const newJiraf = {title:title, message:message, labels:labels, color: color, id:id};
     tmpJirafItems.unshift(newJiraf);
 
     this.setState({jirafItems: tmpJirafItems});
@@ -71,6 +80,28 @@ class App extends React.Component {
     this.setState({labels: [...this.state.labels, {label: label, selected: false}]});
   }
 
+  editJiraf(jirafItem, optionDelete)
+  {
+    const jirafItems = this.state.jirafItems;
+    var i = 0;
+    while(jirafItems[i].id !== jirafItem.id)
+    {
+      i++;
+      if(i >= jirafItems.length) return;
+    }
+
+    if(optionDelete)
+    {
+      jirafItems.splice(i, 1); // 2nd parameter means remove one item only
+    }
+    else
+    {
+      jirafItems[i] = jirafItem;
+    }
+    this.setState({jirafItems: jirafItems});
+    this.handleLabelSelect(this.state.currentLabel);
+  }
+  
   componentDidMount() {
     fetch("/data")
         .then((res) => res.json())
@@ -98,7 +129,7 @@ class App extends React.Component {
 
         <div className='main'>
           <AddBar newJirafMethod={this.addNewJirafItem} />
-          <ListsView jirafItems={this.state.selectedJirafs}/>
+          <ListsView jirafItems={this.state.selectedJirafs} editCallback={this.editJiraf}/>
         </div>
       </div>
     );

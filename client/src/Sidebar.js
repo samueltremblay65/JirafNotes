@@ -56,7 +56,6 @@ export default function Sidebar({labels, labelChangeHandler, labelAddHandler}) {
                 addLabelDialog.current.close();
                 errorMessageLabel.current.innerHTML = "";
             }
-
         }
     }
 
@@ -66,11 +65,12 @@ export default function Sidebar({labels, labelChangeHandler, labelAddHandler}) {
             <ul>{labelList}</ul>
             <hr />
             <button className="fullWidth" onClick={showDialog}>Add Label</button>
+            <button className="fullWidth red mg_top_10">Manage Labels</button>
 
             <dialog ref={addLabelDialog}>
                 <label htmlFor="">Create new label</label>
                 <input ref={addLabelInput} type="text" placeholder='Label name' />
-                <button onClick={addLabel}>Submit</button>
+                <button onClick={addLabel}>Add</button>
                 <p className="error_message" ref={errorMessageLabel}></p>
             </dialog>
         </div>

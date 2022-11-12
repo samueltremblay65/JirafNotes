@@ -10,9 +10,9 @@ app.get("/api", (req, res) => {
 
 jirafs = [];
 
-jirafs.push({title: "Important note on pandas", message: "Panda bears are very important to their ecosystems", labels:["All", "Important"], color:"yellow"});
-jirafs.push({title: "School note", message: "Don't forget to do your math homework", labels:["All", "School", "Today"], color:"red"});
-jirafs.push({title: "Random note", message: "This is a drawing", labels:["All"], color:"lightblue"});
+// jirafs.push({title: "Important note on pandas", message: "Panda bears are very important to their ecosystems", labels:["All", "Important"], color:"yellow", id:"sam_001"});
+// jirafs.push({title: "School note", message: "Don't forget to do your math homework", labels:["All", "School", "Today"], color:"red", id:"sam002"});
+// jirafs.push({title: "Random note", message: "This is a drawing", labels:["All"], color:"lightblue", id:"sam003"});
 
 app.get("/data", (req, res) => {
     res.json({
@@ -20,7 +20,6 @@ app.get("/data", (req, res) => {
       jirafItems: jirafs,
       currentLabel: "All"
     });
-    console.log("Sent data to react app");
   });
 
 app.listen(PORT, () => {
