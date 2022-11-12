@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import logo from "./JirafLogo.PNG"
 import LabelList from './LabelList';
 
-export default function Sidebar({labels, labelChangeHandler, labelAddHandler}) {
+export default function Sidebar({labels, labelChangeHandler, labelAddHandler, labelDeleteHandler}) {
 
     const addLabelDialog = useRef();
     const errorMessageLabel = useRef();
@@ -61,6 +61,11 @@ export default function Sidebar({labels, labelChangeHandler, labelAddHandler}) {
         }
     }
 
+    function deleteHandler(id)
+    {
+        labelDeleteHandler(id)
+    }
+
     function showManageLabels()
     {
         manageLabelsDialog.current.showModal();
@@ -81,9 +86,9 @@ export default function Sidebar({labels, labelChangeHandler, labelAddHandler}) {
                 <p className="error_message" ref={errorMessageLabel}></p>
             </dialog>
 
-            <dialog ref={manageLabelsDialog}>
+            <dialog className="manageLabelsDialog" ref={manageLabelsDialog}>
                 <label>Manage labels</label>
-                <LabelList />
+                <LabelList labels={labels} deleteCallback={deleteHandler}/>
             </dialog>
         </div>
     )

@@ -125,6 +125,7 @@ ul
 
 .red {
   background-color: var(--main-colors-red);
+  border-color: var(--main-colors-red);
 }
 
 .pink {
@@ -235,6 +236,7 @@ label {
 
 button.red:active {
   background-color: var(--button-color-lightred);
+  border-color: var(--button-color-lightred);
 }
 
 .block {
@@ -309,4 +311,48 @@ select {
 .bulleted {
   list-style-type: disc;
   margin-left: 20px;
+}
+
+.manageLabelsDialog {
+  width: 30%;
+}
+
+.inline {
+  display: inline;
+}
+
+.clear {
+  overflow: auto;
+}
+
+.space_between {
+  justify-content: space-between;
+}
+
+.flex {
+  display: flex;
+}
+
+.auto_height {
+  height: auto;
+}
+
+.borders {
+  border-bottom: 1px solid grey;
+}
+
+.borders:last-child {
+  border-bottom: none;
+}
+
+.mg-block-5 {
+  margin-block: 5px;
+}
+
+.manageLabelsLabel:hover {
+  background-color: rgb(244, 244, 244);
+}
+
+.manageLabelsLabel {
+  padding: 5px;
 }
