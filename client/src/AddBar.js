@@ -6,6 +6,7 @@ export default function AddBar({newJirafMethod}) {
     const createModalRef = useRef();
     const createTitleRef = useRef();
     const createContentRef = useRef();
+    const selectColorRef = useRef();
 
     function openCreateModal()
     {
@@ -16,53 +17,23 @@ export default function AddBar({newJirafMethod}) {
 
     function addJiraf()
     {
-        const random_color = Math.floor(Math.random() * 9);
-
-        var colorName;
-    
-        switch(random_color){
-          case 0:
-            colorName = "yellow";
-            break;
-          case 1:
-            colorName = "orange";
-            break;
-          case 2:
-            colorName = "red";
-            break;
-          case 3:
-            colorName = "pink";
-            break;
-          case 4:
-            colorName = "purple";
-            break;
-          case 5:
-            colorName = "blue";
-            break;
-          case 6:
-            colorName = "lightblue";
-            break;
-          case 7:
-            colorName = "lightgreen";
-            break;
-          case 8:
-            colorName = "yellowgreen";
-            break;
-          default:
-            colorName = "white";
-            break;
-        }
-        if(createContentRef.current.value.trim() === "" && createTitleRef.current.value.trim() === "")
-        {
-            newJirafMethod("New note", "", colorName);
-        }
-        else
-        {
-            newJirafMethod(createTitleRef.current.value, createContentRef.current.value, colorName);
-        }
-        createTitleRef.current.value = "";
-        createContentRef.current.value = "";
-        createModalRef.current.close();
+      var color = selectColorRef.current.value;
+      if(color === "")
+      {
+        color = "white";
+      }
+      if(createContentRef.current.value.trim() === "" && createTitleRef.current.value.trim() === "")
+      {
+        newJirafMethod("New note", "", color);
+      }
+      else
+      {
+        newJirafMethod(createTitleRef.current.value, createContentRef.current.value, color);
+      }
+      createTitleRef.current.value = "";
+      createContentRef.current.value = "";
+      createModalRef.current.close();
+      selectColorRef.current.value = "";
     }
 
   return (
@@ -75,8 +46,21 @@ export default function AddBar({newJirafMethod}) {
             <label>New Note</label>
             <input className="form_input block" type="text" ref={createTitleRef} placeholder="title"></input>
             <textarea ref={createContentRef} placeholder='take a note...'></textarea>
-            <div className='centered'>
-                <button className='float_right' onClick={addJiraf}>Create note</button>
+            <div>
+              <button className='float_right' onClick={addJiraf}>Create note</button>
+              <select className='float_right' ref={selectColorRef}>
+                <option value="" disabled>Select a color</option>
+                <option value="white">White</option>
+                <option value="yellow">Yellow</option>
+                <option value="orange">Orange</option>
+                <option value="red">Red</option>
+                <option value="pink">Pink</option>
+                <option value="purple">Purple</option>
+                <option value="blue">Blue</option>
+                <option value="lightblue">Light blue</option>
+                <option value="lightgreen">Light green</option>
+                <option value="yellowgreen">Yellow-Green</option>
+              </select>
             </div>
         </dialog>
     </>

@@ -10,6 +10,7 @@ export default function ListsView({jirafItems, editCallback}) {
     const createModalRef = useRef();
     const createTitleRef = useRef();
     const createContentRef = useRef();
+    const colorSelector = useRef();
 
     const columnArrays = [[],[]];
 
@@ -43,6 +44,12 @@ export default function ListsView({jirafItems, editCallback}) {
         createModalRef.current.close();
     }
 
+    function changeColor()
+    {
+        const color = colorSelector.current.value;
+        currentJiraf.color = color;
+    }
+
   return (
     <div className="column_container">
         <div className="column">
@@ -58,9 +65,22 @@ export default function ListsView({jirafItems, editCallback}) {
             <label>Edit note</label>
             <input className="form_input block" type="text" ref={createTitleRef} placeholder="title"></input>
             <textarea ref={createContentRef} placeholder='take a note...'></textarea>
-            <div className='centered'>
+            <div>
                 <button className='mg-inline-5 float_right' onClick={editJiraf}>Save changes</button>
                 <button className='mg-inline-5 float_right red' onClick={deleteJiraf}>Delete note</button>
+                <select className="float_right" ref={colorSelector} onChange={changeColor}>
+                    <option value="" disabled>Select a color</option>
+                    <option value="yellow">White</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="orange">Orange</option>
+                    <option value="red">Red</option>
+                    <option value="pink">Pink</option>
+                    <option value="purple">Purple</option>
+                    <option value="blue">Blue</option>
+                    <option value="lightblue">Light blue</option>
+                    <option value="lightgreen">Light green</option>
+                    <option value="yellowgreen">Yellow-Green</option>
+                </select>
             </div>
         </dialog>
     </div>
