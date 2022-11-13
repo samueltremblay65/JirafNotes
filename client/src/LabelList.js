@@ -12,7 +12,7 @@ export default function LabelList({labels, deleteCallback}) {
 
   if(labels.length <= 1)
   {
-    return (<div><p>No labels to manage</p></div>);
+    return (<div><p>You have no labels</p></div>);
   }
 
   for(var i = 0; i < labels.length; i++)
