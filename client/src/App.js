@@ -93,7 +93,7 @@ class App extends React.Component {
 
     if(i >= tmpLabels.length)
     {
-      alert("Could not delete the " + label.label + " label.")
+      alert("Could not delete the " + label.label + " label.");
       return;
     }
     
